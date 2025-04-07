@@ -27,3 +27,7 @@ while True:
         
 
     #keep looping until user chooses to exit the program
+    input_another_question = input("Do you want to enter another question? (yes/no): ").strip().lower()
+    if input_another_question[0] == 'n':
+        print("Exiting.....")
+        break
