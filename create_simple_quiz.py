@@ -98,10 +98,12 @@ def edit_question():
 
     #every question is 7 lines long
     lines[index] = f"{number_to_edit}.Question: {new_question}\n"
-    lines[index + 1] = f"B. {new_option_b}\n"
-    lines[index + 2] = f"C. {new_option_c}\n"
-    lines[index + 3] = f"D. {new_option_d}\n"
-    lines[index + 4] = f"Correct Answer: {new_correct_answer}"
+    lines[index + 1] = f"A. {new_option_a}\n"
+    lines[index + 2] = f"B. {new_option_b}\n"
+    lines[index + 3] = f"C. {new_option_c}\n"
+    lines[index + 4] = f"D. {new_option_d}\n"
+    lines[index + 5] = f"Correct Answer: {new_correct_answer}"
+    lines[index + 6] = "\n"
 
     with open(file_name,"w") as quiz_file:
         quiz_file.writelines(lines)
@@ -113,7 +115,7 @@ while True:
     print("3. Edit question")
     print("4. Exit\n")
 
-    choice = input("Select option (1/2/3): ").strip()
+    choice = input("Select option (1/2/3/4): ").strip()
 
     if choice == '1':
         add_question()
@@ -125,4 +127,4 @@ while True:
         print("Goodbye")
         break
     else:
-        print(colored("Invalid Input, only choose from the selection (1/2/3) \n", "red"))
+        print(colored("Invalid Input, only choose from the selection (1/2/3/4) \n", "red"))
