@@ -19,10 +19,12 @@ time_stamp = time.strftime("%d%m%Y_%H%M%S")
 file_name = f"{base_name}_{time_stamp}.txt"
 
 question_number = 1
+questions_made = 0
 
 def add_question():
     global file_name
     global question_number
+    global questions_made
      #ask for inputs (question, possible answers, and correct answer)
     question = input("Enter a question: ").strip()
     option_a = input("Enter option a: ").strip()
@@ -47,6 +49,7 @@ def add_question():
         
     
     question_number += 1
+    questions_made += 1
 
 def view_questions():
     global file_name
@@ -55,18 +58,37 @@ def view_questions():
         print(colored("no question saved yet.\n","red"))
         return
         
-    print("contents of current file: \n")
+    print(colored("contents of current file:", "green"))
     with open(file_name, "r") as quiz_file:
         print(quiz_file.read())
 
 def edit_question():
-    pass
+    global file_name
+    global questions_made
+    lines = []
+
+    #read the file 
+    if not os.path.exists(file_name):
+        print(colored("no question saved yet.\n","red"))
+        return
+    
+    with open(file_name, "r") as quiz_file:
+        for line in quiz_file:
+            lines.append(line)
+
+    line_to_edit = input("Number to Edit: ")
+
+    #for each set of questions there are 7 lines
+    lines[0][10:] = "wow"
+
+
 
 while True:
     print("\nQUIZ BUILDER MENU")
     print("1. Add a new question")
     print("2. View saved questions")
-    print("3. Exit\n")
+    print("3. Edit question")
+    print("4. Exit\n")
 
     choice = input("Select option (1/2/3): ").strip()
 
@@ -75,6 +97,8 @@ while True:
     elif choice == '2':
         view_questions()
     elif choice == '3':
+        edit_question()
+    elif choice == '4':
         print("Goodbye")
         break
     else:
