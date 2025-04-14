@@ -14,6 +14,7 @@ time_stamp = time.strftime("%d%m%Y_%H%M%S")
 file_name = f"{base_name}_{time_stamp}.txt"
 
 def add_question():
+    global file_name
      #ask for inputs (question, possible answers, and correct answer)
     question = input("Enter a question: ").strip()
     option_a = input("Enter option a: ").strip()
@@ -32,16 +33,18 @@ def add_question():
         quiz_file.write("Correct Answer: " + correct_answer + "\n")
 
 def view_questions():
+    global file_name
     #read the file 
     if not os.path.exists(file_name):
         print("no question saved yet.\n")
+        return
         
     print("contents of current file: \n")
     with open(file_name, "r") as quiz_file:
         print(quiz_file.read())
 
 while True:
-    print("QUIZ BUILDER MENU")
+    print("\n QUIZ BUILDER MENU")
     print("1. Add a new question")
     print("2. View saved questions")
     print("3. Exit\n")
