@@ -79,7 +79,7 @@ def edit_question():
     for number in range(questions_made):
         print(f"Question {number + 1}. \n")
     
-    number_to_edit = input("Number to Edit: ")
+    number_to_edit = int(input("Number to Edit: "))
 
     #so that the input of user corresponds to 0,7,14 and so one which is the separation of each questions
     index = (number_to_edit - 1)*7
@@ -89,20 +89,22 @@ def edit_question():
     new_option_b = input("Enter option b: ").strip()
     new_option_c = input("Enter option c: ").strip()
     new_option_d = input("Enter option d: ").strip()
+    while True:
+        new_correct_answer = input("Enter Correct answer (a/b/c/d): ").strip().lower()
+        if new_correct_answer in ['a','b','c','d']:
+            break
+        print(colored("Invalid Correct answer choose between (a/b/c/d)","red"))
 
 
     #every question is 7 lines long
-    lines[index] = new_question
-    lines[index + 1] = new_option_a
-    lines[index + 2] = new_option_b
-    lines[index + 3] = new_option_c
-    lines[index + 4] = new_option_d
+    lines[index] = f"{number_to_edit}.Question: {new_question}\n"
+    lines[index + 1] = f"B. {new_option_b}\n"
+    lines[index + 2] = f"C. {new_option_c}\n"
+    lines[index + 3] = f"D. {new_option_d}\n"
+    lines[index + 4] = f"Correct Answer: {new_correct_answer}"
 
-    
-
-
-
-
+    with open(file_name,"w") as quiz_file:
+        quiz_file.writelines(lines)
 
 while True:
     print("\nQUIZ BUILDER MENU")
