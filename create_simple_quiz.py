@@ -6,6 +6,13 @@ to a text file. Ask another question until the
 user chose to exit.
 
 """
+import time
+
+base_name = input("File name of quiz: ")
+
+time_stamp = time.strftime("%d%m%Y_%H%M%S")
+
+file_name = f"{base_name}_{time_stamp}.txt"
 
 while True:
     #ask for inputs (question, possible answers, and correct answer)
@@ -17,8 +24,8 @@ while True:
     correct_answer = input("Enter Correct answer: ")
 
     #write the collected data to a .txt file
-    with open("question_and_answer.txt","a") as quiz_file:
-        quiz_file.write("Question" + question + "\n")
+    with open(file_name,"a") as quiz_file:
+        quiz_file.write("Question: " + question + "\n")
         quiz_file.write("A. " + option_a + "\n")
         quiz_file.write("B. " + option_b + "\n")
         quiz_file.write("C. " + option_c + "\n")
