@@ -18,8 +18,11 @@ base_name = input("File name of quiz: ")
 time_stamp = time.strftime("%d%m%Y_%H%M%S")
 file_name = f"{base_name}_{time_stamp}.txt"
 
+question_number = 1
+
 def add_question():
     global file_name
+    global question_number
      #ask for inputs (question, possible answers, and correct answer)
     question = input("Enter a question: ").strip()
     option_a = input("Enter option a: ").strip()
@@ -35,12 +38,15 @@ def add_question():
 
     #write the collected data to a .txt file
     with open(file_name,"a") as quiz_file:
-        quiz_file.write("Question: " + question + "\n")
+        quiz_file.write(f"{question_number}.Question: {question}\n")
         quiz_file.write("A. " + option_a + "\n")
         quiz_file.write("B. " + option_b + "\n")
         quiz_file.write("C. " + option_c + "\n")
         quiz_file.write("D. " + option_d + "\n")
-        quiz_file.write("Correct Answer: " + correct_answer + "\n")
+        quiz_file.write("Correct Answer: " + correct_answer + "\n\n")
+        
+    
+    question_number += 1
 
 def view_questions():
     global file_name
@@ -52,6 +58,9 @@ def view_questions():
     print("contents of current file: \n")
     with open(file_name, "r") as quiz_file:
         print(quiz_file.read())
+
+def edit_question():
+    pass
 
 while True:
     print("\nQUIZ BUILDER MENU")
