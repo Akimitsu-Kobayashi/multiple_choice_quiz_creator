@@ -7,13 +7,10 @@ user chose to exit.
 
 """
 import time
-
-ask_for_input = True
+import os
 
 base_name = input("File name of quiz: ")
-
 time_stamp = time.strftime("%d%m%Y_%H%M%S")
-
 file_name = f"{base_name}_{time_stamp}.txt"
 
 def add_question():
@@ -36,6 +33,12 @@ def add_question():
 
 def view_questions():
     #read the file 
+    if not os.path.exists(file_name):
+        print("no question saved yet.\n")
+        
+    print("contents of current file: \n")
+    with open(file_name, "r") as quiz_file:
+        print(quiz_file.read())
 
 while True:
     print("QUIZ BUILDER MENU")
