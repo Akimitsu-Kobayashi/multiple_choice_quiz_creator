@@ -16,8 +16,8 @@ time_stamp = time.strftime("%d%m%Y_%H%M%S")
 
 file_name = f"{base_name}_{time_stamp}.txt"
 
-while ask_for_input == True:
-    #ask for inputs (question, possible answers, and correct answer)
+def add_question():
+     #ask for inputs (question, possible answers, and correct answer)
     question = input("Enter a question: ").strip()
     option_a = input("Enter option a: ").strip()
     option_b = input("Enter option b: ").strip()
@@ -33,20 +33,15 @@ while ask_for_input == True:
         quiz_file.write("C. " + option_c + "\n")
         quiz_file.write("D. " + option_d + "\n")
         quiz_file.write("Correct Answer: " + correct_answer + "\n")
-        
 
-    #keep looping until user chooses to exit the program
-    while True:
-        try:
-            input_another_question = input("Do you want to enter another question? (yes/no): ").strip().lower()
-            if input_another_question[0] == 'n':
-                print("Exiting.....")
-                ask_for_input = False
-                break
-            elif input_another_question[0] == 'y':
-                ask_for_input =  True
-                break
-            else:
-                print("Invalid Input")
-        except:
-            print("Invalid Input")
+def view_questions():
+    #read the file 
+
+while True:
+    print("QUIZ BUILDER MENU")
+    print("1. Add a new question")
+    print("2. View saved questions")
+    print("3. Exit\n")
+
+    choice = input("Select option (1/2/3): ").strip()
+
