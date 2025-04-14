@@ -8,6 +8,11 @@ user chose to exit.
 """
 import time
 import os
+import pyfiglet
+from termcolor import colored
+
+title = pyfiglet.figlet_format("Welcome to \n QUIZ MAKER")
+print(colored(title, "cyan"))
 
 base_name = input("File name of quiz: ")
 time_stamp = time.strftime("%d%m%Y_%H%M%S")
@@ -36,7 +41,7 @@ def view_questions():
     global file_name
     #read the file 
     if not os.path.exists(file_name):
-        print("no question saved yet.\n")
+        print(colored("no question saved yet.\n","red"))
         return
         
     print("contents of current file: \n")
@@ -59,4 +64,4 @@ while True:
         print("Goodbye")
         break
     else:
-        print("Invalid Input, only choose from the selection (1/2/3) \n")
+        print(colored("Invalid Input, only choose from the selection (1/2/3) \n", "red"))
