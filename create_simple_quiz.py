@@ -12,7 +12,7 @@ import pyfiglet
 from termcolor import colored
 
 title = pyfiglet.figlet_format("Welcome to \n QUIZ MAKER")
-print(colored(title, "cyan"))
+print(colored(title, "blue"))
 
 base_name = input("File name of quiz: ")
 time_stamp = time.strftime("%d%m%Y_%H%M%S")
@@ -26,7 +26,12 @@ def add_question():
     option_b = input("Enter option b: ").strip()
     option_c = input("Enter option c: ").strip()
     option_d = input("Enter option d: ").strip()
-    correct_answer = input("Enter Correct answer: ").strip()
+    while True:
+        correct_answer = input("Enter Correct answer (a/b/c/d): ").strip().lower()
+        if correct_answer in ['a','b','c','d']:
+            break
+        print(colored("Invalid Correct answer choose between (a/b/c/d)","red"))
+
 
     #write the collected data to a .txt file
     with open(file_name,"a") as quiz_file:
@@ -49,7 +54,7 @@ def view_questions():
         print(quiz_file.read())
 
 while True:
-    print("\n QUIZ BUILDER MENU")
+    print("\nQUIZ BUILDER MENU")
     print("1. Add a new question")
     print("2. View saved questions")
     print("3. Exit\n")
