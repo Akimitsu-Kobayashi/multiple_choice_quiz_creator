@@ -76,10 +76,31 @@ def edit_question():
         for line in quiz_file:
             lines.append(line)
 
-    line_to_edit = input("Number to Edit: ")
+    for number in range(questions_made):
+        print(f"Question {number + 1}. \n")
+    
+    number_to_edit = input("Number to Edit: ")
 
-    #for each set of questions there are 7 lines
-    lines[0][10:] = "wow"
+    #so that the input of user corresponds to 0,7,14 and so one which is the separation of each questions
+    index = (number_to_edit - 1)*7
+
+    new_question = input("Enter a question: ").strip()
+    new_option_a = input("Enter option a: ").strip()
+    new_option_b = input("Enter option b: ").strip()
+    new_option_c = input("Enter option c: ").strip()
+    new_option_d = input("Enter option d: ").strip()
+
+
+    #every question is 7 lines long
+    lines[index] = new_question
+    lines[index + 1] = new_option_a
+    lines[index + 2] = new_option_b
+    lines[index + 3] = new_option_c
+    lines[index + 4] = new_option_d
+
+    
+
+
 
 
 
