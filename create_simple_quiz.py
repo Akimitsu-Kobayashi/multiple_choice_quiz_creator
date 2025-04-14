@@ -18,12 +18,12 @@ file_name = f"{base_name}_{time_stamp}.txt"
 
 while ask_for_input == True:
     #ask for inputs (question, possible answers, and correct answer)
-    question = input("Enter a question: ")
-    option_a = input("Enter option a: ")
-    option_b = input("Enter option b: ")
-    option_c = input("Enter option c: ")
-    option_d = input("Enter option d: ")
-    correct_answer = input("Enter Correct answer: ")
+    question = input("Enter a question: ").strip()
+    option_a = input("Enter option a: ").strip()
+    option_b = input("Enter option b: ").strip()
+    option_c = input("Enter option c: ").strip()
+    option_d = input("Enter option d: ").strip()
+    correct_answer = input("Enter Correct answer: ").strip()
 
     #write the collected data to a .txt file
     with open(file_name,"a") as quiz_file:
