@@ -18,12 +18,12 @@ while True:
 
     #write the collected data to a .txt file
     with open("question_and_answer.txt","a") as quiz_file:
-        quiz_file.write(question + "\n")
-        quiz_file.write(option_a + "\n")
-        quiz_file.write(option_b + "\n")
-        quiz_file.write(option_c + "\n")
-        quiz_file.write(option_d + "\n")
-        quiz_file.write(correct_answer + "\n")
+        quiz_file.write("Question" + question + "\n")
+        quiz_file.write("A. " + option_a + "\n")
+        quiz_file.write("B. " + option_b + "\n")
+        quiz_file.write("C. " + option_c + "\n")
+        quiz_file.write("D. " + option_d + "\n")
+        quiz_file.write("Correct Answer: " + correct_answer + "\n")
         
 
     #keep looping until user chooses to exit the program
