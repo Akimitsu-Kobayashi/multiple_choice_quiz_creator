@@ -8,13 +8,15 @@ user chose to exit.
 """
 import time
 
+ask_for_input = True
+
 base_name = input("File name of quiz: ")
 
 time_stamp = time.strftime("%d%m%Y_%H%M%S")
 
 file_name = f"{base_name}_{time_stamp}.txt"
 
-while True:
+while ask_for_input == True:
     #ask for inputs (question, possible answers, and correct answer)
     question = input("Enter a question: ")
     option_a = input("Enter option a: ")
@@ -34,7 +36,17 @@ while True:
         
 
     #keep looping until user chooses to exit the program
-    input_another_question = input("Do you want to enter another question? (yes/no): ").strip().lower()
-    if input_another_question[0] == 'n':
-        print("Exiting.....")
-        break
+    while True:
+        try:
+            input_another_question = input("Do you want to enter another question? (yes/no): ").strip().lower()
+            if input_another_question[0] == 'n':
+                print("Exiting.....")
+                ask_for_input = False
+                break
+            elif input_another_question[0] == 'y':
+                ask_for_input =  True
+                break
+            else:
+                print("Invalid Input")
+        except:
+            print("Invalid Input")
