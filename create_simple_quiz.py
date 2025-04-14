@@ -45,3 +45,12 @@ while True:
 
     choice = input("Select option (1/2/3): ").strip()
 
+    if choice == '1':
+        add_question()
+    elif choice == '2':
+        view_questions()
+    elif choice == '3':
+        print("Goodbye")
+        break
+    else:
+        print("Invalid Input, only choose from the selection (1/2/3) \n")
