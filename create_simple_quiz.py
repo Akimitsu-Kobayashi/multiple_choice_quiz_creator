@@ -33,13 +33,13 @@ def add_question():
     option_d = input("Enter option d: ").strip()
     while True:
         correct_answer = input("Enter Correct answer (a/b/c/d): ").strip().lower()
-        if correct_answer in ['a','b','c','d']:
+        if correct_answer in ['a', 'b', 'c', 'd']:
             break
-        print(colored("Invalid Correct answer choose between (a/b/c/d)","red"))
+        print(colored("Invalid Correct answer choose between (a/b/c/d)", "red"))
 
 
     #write the collected data to a .txt file
-    with open(file_name,"a") as quiz_file:
+    with open(file_name, "a") as quiz_file:
         quiz_file.write(f"{question_number}.Question: {question}\n")
         quiz_file.write("A. " + option_a + "\n")
         quiz_file.write("B. " + option_b + "\n")
@@ -55,7 +55,7 @@ def view_questions():
     global file_name
     #read the file 
     if not os.path.exists(file_name):
-        print(colored("no question saved yet.\n","red"))
+        print(colored("no question saved yet.\n", "red"))
         return
         
     print(colored("contents of current file:", "green"))
@@ -69,7 +69,7 @@ def edit_question():
 
     #read the file 
     if not os.path.exists(file_name):
-        print(colored("no question saved yet.\n","red"))
+        print(colored("no question saved yet.\n", "red"))
         return
     
     with open(file_name, "r") as quiz_file:
@@ -78,8 +78,18 @@ def edit_question():
 
     for number in range(questions_made):
         print(f"Question {number + 1}. \n")
-    
-    number_to_edit = int(input("Number to Edit: "))
+
+    while True:
+        try:
+            number_to_edit = int(input("Number to Edit: ").strip())
+
+            if 0 < number_to_edit <= questions_made:
+                break
+            else:
+                print(colored(f"Number Out of range there are only {questions_made} questions saved", "red"))
+            
+        except:
+            print(colored("Invalid Input", "red"))
 
     #so that the input of user corresponds to 0,7,14 and so one which is the separation of each questions
     index = (number_to_edit - 1)*7
@@ -91,9 +101,9 @@ def edit_question():
     new_option_d = input("Enter option d: ").strip()
     while True:
         new_correct_answer = input("Enter Correct answer (a/b/c/d): ").strip().lower()
-        if new_correct_answer in ['a','b','c','d']:
+        if new_correct_answer in ['a', 'b', 'c', 'd']:
             break
-        print(colored("Invalid Correct answer choose between (a/b/c/d)","red"))
+        print(colored("Invalid Correct answer choose between (a/b/c/d)", "red"))
 
 
     #every question is 7 lines long
@@ -103,19 +113,20 @@ def edit_question():
     lines[index + 3] = f"C. {new_option_c}\n"
     lines[index + 4] = f"D. {new_option_d}\n"
     lines[index + 5] = f"Correct Answer: {new_correct_answer}"
-    lines[index + 6] = "\n"
+    lines[index + 6] = "\n\n"
 
-    with open(file_name,"w") as quiz_file:
+    with open(file_name, "w") as quiz_file:
         quiz_file.writelines(lines)
 
 while True:
-    print("\nQUIZ BUILDER MENU")
+    print(colored("\nQUIZ BUILDER MENU", "yellow"))
     print("1. Add a new question")
     print("2. View saved questions")
     print("3. Edit question")
-    print("4. Exit\n")
+    print("4. Exit")
 
-    choice = input("Select option (1/2/3/4): ").strip()
+    choice = input(colored("Select option (1/2/3/4): ", "blue")).strip()
+    print("")
 
     if choice == '1':
         add_question()
