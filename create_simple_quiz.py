@@ -77,7 +77,7 @@ def edit_question():
             lines.append(line)
 
     for number in range(questions_made):
-        print(f"Question {number + 1}. \n")
+        print(colored(f"Question {number + 1}. \n", "orange"))
 
     while True:
         try:
