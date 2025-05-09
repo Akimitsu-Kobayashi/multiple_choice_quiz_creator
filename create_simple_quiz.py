@@ -11,15 +11,15 @@ import os
 import pyfiglet
 from termcolor import colored
 
-title = pyfiglet.figlet_format("Welcome to \n QUIZ MAKER")
-print(colored(title, "blue"))
-
 base_name = input("File name of quiz: ")
 time_stamp = time.strftime("%d%m%Y_%H%M%S")
 file_name = f"{base_name}_{time_stamp}.txt"
 
 question_number = 1
 questions_made = 0
+
+title = pyfiglet.figlet_format("Welcome to \n QUIZ MAKER")
+print(colored(title, "blue"))
 
 def add_question():
     global file_name

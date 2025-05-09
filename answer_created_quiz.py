@@ -4,10 +4,22 @@ The user will answer the randomly selected question and check if the answer is c
 """
 import os
 
+text_files = []
+
 #open file 
 for files_name in os.listdir("."):
     if files_name.endswith(".txt"):
-        print(files_name)
+        text_files.append(files_name)
+
+#ask which file to open
+number_counter = 0
+for files in text_files:
+    print(f"{str(number_counter + 1)}) {files}")
+    number_counter += 1
+
+
+selected_file = int(input("Enter which file you want to open: "))
+
 
 #randomize questions/ if possible randomize options aswell
 
