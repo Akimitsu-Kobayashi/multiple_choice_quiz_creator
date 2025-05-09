@@ -12,6 +12,7 @@ print(colored(title, "blue"))
 
 text_files = []
 each_line = []
+total_score = 0
 
 #find text files
 for files_name in os.listdir("."):
@@ -68,7 +69,19 @@ for random_number in randomizer:
     current_answer = each_line[index+5][16:].strip().lower()
     if answer.lower().strip() == current_answer:
         print(colored("correct\n", "green"))
+        total_score += 1
+
     else:
         print(colored("incorrect\n", "red"))
 
+#show red if failed and green if pass
+grade = round((total_score / number_of_questions) * 100, 2)
 
+print("Average Score: ", end = '')
+
+if 25 <= grade <= 70:
+    print(colored(grade, "yellow"))
+elif 0 == grade < 25:
+    print(colored(grade, "red")) 
+else:
+    print(colored(grade, "green"))
