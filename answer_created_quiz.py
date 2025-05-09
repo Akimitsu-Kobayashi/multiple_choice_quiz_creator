@@ -3,6 +3,7 @@ Create the Quiz program that read the output file of the Quiz Creator.
 The user will answer the randomly selected question and check if the answer is correct.
 """
 import os
+import random
 
 text_files = []
 each_line = []
@@ -30,23 +31,22 @@ with open(text_files[selected_file - 1] , 'r') as quiz_file:
 
 number_of_questions = len(each_line) // 6 #each question is composed of 6 lines 
 
-for questions in range(number_of_questions):
-    index = (questions) * 6
+randomizer = random.sample(range(1, number_of_questions + 1), number_of_questions)
+
+for random_number in randomizer:
+    index = (random_number - 1) * 6
     current_question = each_line[index:index + 5]
     for lines in current_question:
         print(lines, end = '')
     
-    
+    #get users answer
     answer = input("\nEnter Your Answer: ")
 
     #show if answer is correct
     current_answer = each_line[index+5][16:].strip().lower()
     if answer.lower().strip() == current_answer:
         print("correct")
-        print(current_answer)
     else:
         print("incorrect")
-        print(current_answer)
 
-#loop until there is no more questions
 

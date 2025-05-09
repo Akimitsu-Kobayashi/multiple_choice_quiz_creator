@@ -91,7 +91,7 @@ def edit_question():
         except:
             print(colored("Invalid Input", "red"))
 
-    #so that the input of user corresponds to 0,7,14 and so one which is the separation of each questions
+    #so that the input of user corresponds to 0,6,12 and so one which is the separation of each questions
     index = (number_to_edit - 1)*6
 
     new_question = input("Enter a question: ").strip()
@@ -112,8 +112,7 @@ def edit_question():
     lines[index + 2] = f"B. {new_option_b}\n"
     lines[index + 3] = f"C. {new_option_c}\n"
     lines[index + 4] = f"D. {new_option_d}\n"
-    lines[index + 5] = f"Correct Answer: {new_correct_answer}"
-    lines[index + 6] = "\n"
+    lines[index + 5] = f"Correct Answer: {new_correct_answer}\n"
 
     with open(file_name, "w") as quiz_file:
         quiz_file.writelines(lines)
