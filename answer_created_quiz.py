@@ -31,8 +31,10 @@ with open(text_files[selected_file - 1] , 'r') as quiz_file:
 number_of_questions = len(each_line) // 6 #each question is composed of 6 lines 
 
 for questions in range(number_of_questions):
-    index = (questions)*6
-    print(each_line[index:index+5])
+    index = (questions) * 6
+    current_question = each_line[index:index + 5]
+    for lines in current_question:
+        print(lines)
     answer = input("Enter Your Answer: ")
 
 #show if answer is correct
