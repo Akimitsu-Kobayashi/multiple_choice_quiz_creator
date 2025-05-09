@@ -4,6 +4,11 @@ The user will answer the randomly selected question and check if the answer is c
 """
 import os
 import random
+import pyfiglet
+from termcolor import colored
+
+title = pyfiglet.figlet_format("Welcome to \n Answer Quiz")
+print(colored(title, "blue"))
 
 text_files = []
 each_line = []
@@ -19,34 +24,51 @@ for files in text_files:
     print(f"{str(number_counter + 1)}) {files}")
     number_counter += 1
 
+while True:
+    try:
+        selected_file = int(input("Enter which file you want to open: "))
+        if 0 < selected_file <= len(text_files):
+            break
+        else:
+            print(colored("Error: Number Out of Range", "red"))
+    except:
+        print(colored("Error: The Input is not a number", "red"))
 
-selected_file = int(input("Enter which file you want to open: "))
+print("\n")
 
 #open text file
 with open(text_files[selected_file - 1] , 'r') as quiz_file:
     for lines in quiz_file:
         each_line.append(lines)
 
-#randomize questions/ if possible randomize options aswell
+#each question is composed of 6 lines
+number_of_questions = len(each_line) // 6 
 
-number_of_questions = len(each_line) // 6 #each question is composed of 6 lines 
-
+#randomize questions
 randomizer = random.sample(range(1, number_of_questions + 1), number_of_questions)
 
 for random_number in randomizer:
     index = (random_number - 1) * 6
     current_question = each_line[index:index + 5]
+
     for lines in current_question:
         print(lines, end = '')
-    
     #get users answer
-    answer = input("\nEnter Your Answer: ")
-
+    while True:
+        try:
+            answer = input("\nEnter Your Answer: ")
+            if answer.lower().strip() not in ['a', 'b', 'c', 'd']:
+                print(colored("Invalid Input possible answers are only (a/b/c/d)", "red"))
+            else:
+                break
+        except:
+            print(colored("Invalid Input possible answers are only (a/b/c/d)", "red"))
+    
     #show if answer is correct
     current_answer = each_line[index+5][16:].strip().lower()
     if answer.lower().strip() == current_answer:
-        print("correct")
+        print(colored("correct\n", "green"))
     else:
-        print("incorrect")
+        print(colored("incorrect\n", "red"))
 
 
