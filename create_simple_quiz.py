@@ -45,7 +45,7 @@ def add_question():
         quiz_file.write("B. " + option_b + "\n")
         quiz_file.write("C. " + option_c + "\n")
         quiz_file.write("D. " + option_d + "\n")
-        quiz_file.write("Correct Answer: " + correct_answer + "\n\n")
+        quiz_file.write("Correct Answer: " + correct_answer + "\n")
         
     
     question_number += 1
@@ -92,7 +92,7 @@ def edit_question():
             print(colored("Invalid Input", "red"))
 
     #so that the input of user corresponds to 0,7,14 and so one which is the separation of each questions
-    index = (number_to_edit - 1)*7
+    index = (number_to_edit - 1)*6
 
     new_question = input("Enter a question: ").strip()
     new_option_a = input("Enter option a: ").strip()
@@ -113,7 +113,7 @@ def edit_question():
     lines[index + 3] = f"C. {new_option_c}\n"
     lines[index + 4] = f"D. {new_option_d}\n"
     lines[index + 5] = f"Correct Answer: {new_correct_answer}"
-    lines[index + 6] = "\n\n"
+    lines[index + 6] = "\n"
 
     with open(file_name, "w") as quiz_file:
         quiz_file.writelines(lines)

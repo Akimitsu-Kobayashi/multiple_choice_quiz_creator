@@ -5,8 +5,9 @@ The user will answer the randomly selected question and check if the answer is c
 import os
 
 text_files = []
+each_line = []
 
-#open file 
+#find text files
 for files_name in os.listdir("."):
     if files_name.endswith(".txt"):
         text_files.append(files_name)
@@ -20,8 +21,19 @@ for files in text_files:
 
 selected_file = int(input("Enter which file you want to open: "))
 
+#open text file
+with open(text_files[selected_file - 1] , 'r') as quiz_file:
+    for lines in quiz_file:
+        each_line.append(lines)
 
 #randomize questions/ if possible randomize options aswell
+
+number_of_questions = len(each_line) // 6 #each question is composed of 6 lines 
+
+for questions in range(number_of_questions):
+    index = (questions)*6
+    print(each_line[index:index+5])
+    answer = input("Enter Your Answer: ")
 
 #show if answer is correct
 
