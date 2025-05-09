@@ -34,10 +34,19 @@ for questions in range(number_of_questions):
     index = (questions) * 6
     current_question = each_line[index:index + 5]
     for lines in current_question:
-        print(lines)
-    answer = input("Enter Your Answer: ")
+        print(lines, end = '')
+    
+    
+    answer = input("\nEnter Your Answer: ")
 
-#show if answer is correct
+    #show if answer is correct
+    current_answer = each_line[index+5][16:].strip().lower()
+    if answer.lower().strip() == current_answer:
+        print("correct")
+        print(current_answer)
+    else:
+        print("incorrect")
+        print(current_answer)
 
 #loop until there is no more questions
 
